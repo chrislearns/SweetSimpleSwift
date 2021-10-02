@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
-import AVKits
+
+import AVKit
 
 public class GeneralHelper {
+    #if os(iOS)
     public static func takeScreenshot(orientation: UIImage.Orientation, sampleBuffer:CMSampleBuffer?) -> Data?{
             
             func takeSC(_ shouldSave: Bool = true) -> UIImage? {
@@ -64,4 +66,5 @@ public class GeneralHelper {
          
             return nil
         }
+    #endif
 }
