@@ -8,7 +8,7 @@
 import SwiftUI
 import AVKit
 
-extension CMSampleBuffer {
+public extension CMSampleBuffer {
     #if os(iOS)
     func toImage(orientation: UIImage.Orientation) -> UIImage
     {
