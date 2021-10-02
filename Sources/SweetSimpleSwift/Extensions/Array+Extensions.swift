@@ -11,7 +11,7 @@ import SpriteKit
 import AVKit
 
 //MARK: - Arrays - All Element Types
-extension Array {
+public extension Array {
     //This function allows you to add things in a round robin fashion. The first thing in the array gets removed and the new item gets added to the end of the array.
     //(item) refers to the thing you're going to add, and (threshold) refers to the upperlimit of things that can go in the array. It's once the array item count reaches the threshold that round robin begins instaead of standard .append of the item into the array
     mutating func roundRobin(_ item: Element, _ threshold:Int){

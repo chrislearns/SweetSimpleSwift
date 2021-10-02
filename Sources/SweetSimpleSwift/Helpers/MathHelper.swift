@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import Accelerate.vecLib.LinearAlgebra
 
+
 public class MathHelper {
     public static func solveSystemOfEquations(matrix:[[Double]], vector:[Double])->[Double]{
         var result: [Double] = Array(repeating: 0.0, count: vector.count)
@@ -26,5 +27,13 @@ public class MathHelper {
         } else {
             return [Double]()
         }
+    }
+    
+    static func sin(degrees: Double) -> Double {
+        return __sinpi(degrees/180.0)
+    }
+
+    static func cos(degrees: Double) -> Double {
+        return __cospi(degrees/180.0)
     }
 }
