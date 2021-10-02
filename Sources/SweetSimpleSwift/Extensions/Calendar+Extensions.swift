@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension Calendar {
+public extension Calendar {
     func monthFromMonthAndYear(month: Int, year: Int) -> Date? {
         date(from: .init(year: year, month: month, day: 1))
     }

@@ -8,8 +8,8 @@
 import SwiftUI
 import AVKits
 
-class GeneralHelper {
-    static func takeScreenshot(orientation: UIImage.Orientation, sampleBuffer:CMSampleBuffer?) -> Data?{
+public class GeneralHelper {
+    public static func takeScreenshot(orientation: UIImage.Orientation, sampleBuffer:CMSampleBuffer?) -> Data?{
             
             func takeSC(_ shouldSave: Bool = true) -> UIImage? {
                 var screenshotImage :UIImage?

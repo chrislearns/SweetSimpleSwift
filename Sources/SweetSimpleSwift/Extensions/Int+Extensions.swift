@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension Int {
+public extension Int {
     var secondToMinute:(minute:Int, second:Int){
         return (self/60, self%60)
     }
