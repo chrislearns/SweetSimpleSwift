@@ -5,7 +5,7 @@
 //  Created by Christopher Guirguis on 10/1/21.
 //
 
-import Foundation
+import SwiftUI
 
 public extension Collection where Element: BinaryInteger {
     /// Returns the average of all elements in the array

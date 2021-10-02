@@ -5,7 +5,7 @@
 //  Created by Christopher Guirguis on 10/1/21.
 //
 
-import Foundation
+import SwiftUI
 
 public func + (left: CGPoint, right: CGPoint) -> CGPoint {
     return CGPoint(x: left.x + right.x, y: left.y + right.y)
