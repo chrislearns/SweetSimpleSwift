@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension CGFloat {
+public extension CGFloat {
     var double:Double{Double(self)}
     
     var int:Int{Int(self)}

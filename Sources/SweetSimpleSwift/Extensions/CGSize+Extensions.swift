@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension CGSize {
+public extension CGSize {
     
     func transformed() -> CGSize {
         return CGSize(width: self.height, height: self.width)

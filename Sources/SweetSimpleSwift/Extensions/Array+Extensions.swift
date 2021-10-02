@@ -32,13 +32,13 @@ public extension Array {
         }
 }
 
-extension Array where Element == Array<CGFloat> {
+public extension Array where Element == Array<CGFloat> {
     //This takes a 2D array of CGFloat and finds the internal max
     func max() -> CGFloat? { self.compactMap{$0.max()}.max() }
 }
 
 //MARK: - Arrays - Element == CGPoint
-extension Array where Element == CGPoint {
+public extension Array where Element == CGPoint {
     
     /*This function takes an array of doubles and finds the smallest and largest of the x and y values. From there it finds the distance between 2 theoretical points:
      - Point 1 = (XMin, YMin)

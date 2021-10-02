@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Double {
+public extension Double {
     func limitFractionDigits(max:Int) -> String {
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 0
