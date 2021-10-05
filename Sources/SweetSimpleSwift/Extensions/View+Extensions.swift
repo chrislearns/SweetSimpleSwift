@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+#if os(iOS)
 extension View {
     @ViewBuilder
     func `if`<Transform: View>(
@@ -49,4 +50,6 @@ extension View {
         }
     }
 }
+
+#endif
 

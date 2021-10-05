@@ -4,7 +4,7 @@
 //
 //  Created by Christopher Guirguis on 10/1/21.
 //
-
+#if os(iOS)
 import SwiftUI
 
 public extension CGPoint {
@@ -83,3 +83,4 @@ public extension CGPoint {
     }
     
 }
+#endif

@@ -5,10 +5,10 @@
 //  Created by Christopher Guirguis on 10/1/21.
 //
 
-#if os(iOS)
+
 import SwiftUI
 import Accelerate.vecLib.LinearAlgebra
-
+#if os(iOS)
 
 public class MathHelper {
     public static func solveSystemOfEquations(matrix:[[Double]], vector:[Double])->[Double]{
@@ -146,5 +146,6 @@ public class MathHelper {
         return direction == .clockwise ? degrees : 360 - degrees
     }
 }
+
 
 #endif

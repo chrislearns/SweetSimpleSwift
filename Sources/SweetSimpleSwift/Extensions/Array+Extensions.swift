@@ -5,6 +5,8 @@
 //  Created by Christopher Guirguis on 10/1/21.
 //
 
+#if os(iOS)
+
 import SwiftUI
 import Vision
 import SpriteKit
@@ -93,3 +95,4 @@ public extension Array where Element == CGPoint {
         }
     
 }
+#endif
