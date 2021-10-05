@@ -51,5 +51,37 @@ extension View {
     }
 }
 
+
+
+
+extension View {
+    func lazy() -> some View{
+        Lazy(self)
+    }
+    
+    func withEnvironmentObjects<EVs:ObservableObject, V: View>(_ vars: [EVs]) -> some View {
+        
+        var v: V = self as! V
+        for object in vars {
+            v = v.environmentObject(object) as! V
+        }
+        
+        return v
+
+    }
+    
+    func embedInNavigationView() -> some View {
+        NavigationView{self}
+            .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    func embedInButton(action: @escaping () -> ()) -> some View{
+        Button(action: action){
+            self
+        }
+    }
+}
+
+
 #endif
 
