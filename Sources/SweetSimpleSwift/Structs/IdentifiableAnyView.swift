@@ -9,8 +9,8 @@
 import SwiftUI
 
 public struct IdentifiableAnyView: Identifiable {
-    var anyview: AnyView
-    let id = UUID()
+    public var anyview: AnyView
+    public let id = UUID()
 }
 
 #endif
