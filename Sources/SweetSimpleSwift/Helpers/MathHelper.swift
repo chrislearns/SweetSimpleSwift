@@ -5,7 +5,7 @@
 //  Created by Christopher Guirguis on 10/1/21.
 //
 
-
+#if os(iOS)
 import SwiftUI
 import Accelerate.vecLib.LinearAlgebra
 
@@ -146,3 +146,5 @@ public class MathHelper {
         return direction == .clockwise ? degrees : 360 - degrees
     }
 }
+
+#endif

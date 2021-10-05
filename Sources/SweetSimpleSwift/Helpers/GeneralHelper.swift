@@ -4,13 +4,13 @@
 //
 //  Created by Christopher Guirguis on 10/2/21.
 //
-
+#if os(iOS)
 import SwiftUI
-
+import UIKit
 import AVKit
 
 public class GeneralHelper {
-    #if os(iOS)
+    
     public static func takeScreenshot(orientation: UIImage.Orientation, sampleBuffer:CMSampleBuffer?) -> Data?{
             
             func takeSC(_ shouldSave: Bool = true) -> UIImage? {
@@ -66,5 +66,6 @@ public class GeneralHelper {
          
             return nil
         }
-    #endif
+    
 }
+#endif

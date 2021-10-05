@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+
+@available(macOS 10.15, *)
+@available(iOS 13, *)
 public extension Animation {
     //These are standard durations we can use in animations
     static var shortDuration: Double {0.15}

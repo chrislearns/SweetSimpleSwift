@@ -4,12 +4,12 @@
 //
 //  Created by Christopher Guirguis on 10/2/21.
 //
-
+#if os(iOS)
 import SwiftUI
 import AVKit
 
 public extension CMSampleBuffer {
-    #if os(iOS)
+    
     func toImage(orientation: UIImage.Orientation) -> UIImage
     {
         // Get a CMSampleBuffer's Core Video image buffer for the media data
@@ -47,5 +47,6 @@ public extension CMSampleBuffer {
         
         return rotatedImage
     }
-    #endif
+    
 }
+#endif
