@@ -10,9 +10,9 @@ import SwiftUI
 
 public protocol HashableNavigationProtocol {
     associatedtype T: HashableDestination
-    public var navUnit:HashableNavigationUnit<T> { get set }
+    var navUnit:HashableNavigationUnit<T> { get set }
     
-    public func setupTrailingButtons()
+    func setupTrailingButtons()
 }
 
 
