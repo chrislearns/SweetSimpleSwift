@@ -8,23 +8,23 @@
 #if os(iOS)
 import SwiftUI
 
-class HashableNavigationUnit<Y:HashableDestination>: ObservableObject, Identifiable{
-    static func == (lhs: HashableNavigationUnit, rhs: HashableNavigationUnit) -> Bool {
+public class HashableNavigationUnit<Y:HashableDestination>: ObservableObject, Identifiable{
+    public static func == (lhs: HashableNavigationUnit, rhs: HashableNavigationUnit) -> Bool {
         return (lhs.id == rhs.id)
     }
-    let id = UUID()
-    @Published var navigationContext: Any? = nil
-    @Published var navigationTitle: LocalizedStringKey = ""
-    @Published var navigationBarHidden: Bool = false
-    @Published var navigationDisplayMode: NavigationBarItem.TitleDisplayMode? = nil
-    @Published var navigationSelector:Y? = nil
-    @Published var isRootNavigationView: Bool = false
+    public let id = UUID()
+    @Published public  var navigationContext: Any? = nil
+    @Published public var navigationTitle: LocalizedStringKey = ""
+    @Published public var navigationBarHidden: Bool = false
+    @Published public var navigationDisplayMode: NavigationBarItem.TitleDisplayMode? = nil
+    @Published public var navigationSelector:Y? = nil
+    @Published public var isRootNavigationView: Bool = false
     
     
-    var leadingButtons:[NavigationBarButton] = []
-    var trailingButtons:[NavigationBarButton] = []
+    public var leadingButtons:[NavigationBarButton] = []
+    public var trailingButtons:[NavigationBarButton] = []
     
-    func goTo<T:ObservableObject>(
+    public func goTo<T:ObservableObject>(
         selection: Y,
         context: T? = nil,
         title: LocalizedStringKey = "",

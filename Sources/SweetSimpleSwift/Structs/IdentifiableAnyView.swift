@@ -8,7 +8,7 @@
 #if os(iOS)
 import SwiftUI
 
-struct IdentifiableAnyView: Identifiable {
+public struct IdentifiableAnyView: Identifiable {
     var anyview: AnyView
     let id = UUID()
 }

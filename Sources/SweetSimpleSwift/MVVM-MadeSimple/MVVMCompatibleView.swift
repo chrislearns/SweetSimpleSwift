@@ -12,21 +12,21 @@ protocol MVVMCompatibleView: View {
     associatedtype ModelType: MVVMCompatibleViewModel<HD>
     associatedtype T: View
     
-    var viewModel: ObservedObject<ModelType> { get set }
-    var navUnit: ObservedObject<HashableNavigationUnit<ModelType.T>> { get set }
+    public var viewModel: ObservedObject<ModelType> { get set }
+    public var navUnit: ObservedObject<HashableNavigationUnit<ModelType.T>> { get set }
     
-    init(viewModel: ModelType, isRootNavigationView: Bool)
-    init(viewModel: ObservedObject<ModelType>, navUnit: ObservedObject<HashableNavigationUnit<ModelType.T>>, isRootNavigationView: Bool)
+    public init(viewModel: ModelType, isRootNavigationView: Bool)
+    public init(viewModel: ObservedObject<ModelType>, navUnit: ObservedObject<HashableNavigationUnit<ModelType.T>>, isRootNavigationView: Bool)
     
-    var mainView: T { get }
+    public var mainView: T { get }
     
-    var isRootNavigationView: Bool { get set }
+    public var isRootNavigationView: Bool { get set }
     
 }
 
 extension MVVMCompatibleView {
     
-    var body: some View {
+    public var body: some View {
         ZStack{
             navUnit.wrappedValue.navigationSelector?.navLink(navUnit: navUnit)
             mainView

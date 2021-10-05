@@ -21,7 +21,7 @@ public extension View {
         }
     }
     
-    func `if`<Transform: View>(
+    public func `if`<Transform: View>(
         _ condition: Bool,
         transform: (Self, Bool) -> Transform
     ) -> some View {
@@ -39,7 +39,7 @@ public extension View {
      }
      */
     @ViewBuilder
-    func ifLet<V, Transform: View>(
+    public func ifLet<V, Transform: View>(
         _ value: V?,
         transform: (Self, V) -> Transform
     ) -> some View {
@@ -54,12 +54,12 @@ public extension View {
 
 
 
-extension View {
-    func lazy() -> some View{
+public extension View {
+    public func lazy() -> some View{
         Lazy(self)
     }
     
-    func withEnvironmentObjects<EVs:ObservableObject, V: View>(_ vars: [EVs]) -> some View {
+    public func withEnvironmentObjects<EVs:ObservableObject, V: View>(_ vars: [EVs]) -> some View {
         
         var v: V = self as! V
         for object in vars {
@@ -70,12 +70,12 @@ extension View {
 
     }
     
-    func embedInNavigationView() -> some View {
+    public func embedInNavigationView() -> some View {
         NavigationView{self}
             .navigationViewStyle(StackNavigationViewStyle())
     }
     
-    func embedInButton(action: @escaping () -> ()) -> some View{
+    public func embedInButton(action: @escaping () -> ()) -> some View{
         Button(action: action){
             self
         }

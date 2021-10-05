@@ -8,13 +8,13 @@
 #if os(iOS)
 import SwiftUI
 
-class MVVMCompatibleViewModel<T: HashableDestination>: ObservableObject, HashableNavigationProtocol {
-    @Published var navUnit: HashableNavigationUnit<T> = .init()
-    @Published var sheetView: IdentifiableAnyView? = nil
+public class MVVMCompatibleViewModel<T: HashableDestination>: ObservableObject, HashableNavigationProtocol {
+    @Published public var navUnit: HashableNavigationUnit<T> = .init()
+    @Published public var sheetView: IdentifiableAnyView? = nil
     
-    typealias T = T
+    public typealias T = T
     
-    func hideKeyboard(){
+    public func hideKeyboard(){
         KeyboardHelper.endediting()
     }
 }

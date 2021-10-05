@@ -8,15 +8,15 @@
 #if os(iOS)
 import SwiftUI
 
-protocol HashableDestination: RawRepresentable, Hashable {
+public protocol HashableDestination: RawRepresentable, Hashable {
     associatedtype T: View
     associatedtype Y: View
-    func navLink(navUnit: ObservedObject<HashableNavigationUnit<Self>>) -> T
-    func destinationView(navUnit: ObservedObject<HashableNavigationUnit<Self>>) -> Y
+    public func navLink(navUnit: ObservedObject<HashableNavigationUnit<Self>>) -> T
+    public func destinationView(navUnit: ObservedObject<HashableNavigationUnit<Self>>) -> Y
 }
 
-extension HashableDestination {
-    func navLink(navUnit: ObservedObject<HashableNavigationUnit<Self>>) -> some View{
+public extension HashableDestination {
+    public func navLink(navUnit: ObservedObject<HashableNavigationUnit<Self>>) -> some View{
         let destination = destinationView(navUnit: navUnit)
         return NavigationLink(
         destination:
@@ -31,7 +31,7 @@ extension HashableDestination {
         })
     }
     
-    func MVVMView<B:MVVMCompatibleView>(
+    public func MVVMView<B:MVVMCompatibleView>(
         type: B.Type,
         model: Any?,
         lazy: Bool = false,

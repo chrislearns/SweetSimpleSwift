@@ -7,9 +7,9 @@
 #if os(iOS)
 import SwiftUI
 
-struct KeyboardHelper {
+public struct KeyboardHelper {
     
-    static func endediting(){
+    public static func endediting(){
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     

@@ -8,16 +8,16 @@
 #if os(iOS)
 import SwiftUI
 
-protocol HashableNavigationProtocol {
+public protocol HashableNavigationProtocol {
     associatedtype T: HashableDestination
-    var navUnit:HashableNavigationUnit<T> { get set }
+    public var navUnit:HashableNavigationUnit<T> { get set }
     
-    func setupTrailingButtons()
+    public func setupTrailingButtons()
 }
 
 
 //This just makes the method optional
-extension HashableNavigationProtocol {
+public extension HashableNavigationProtocol {
     func setupTrailingButtons(){
         //Empty func
     }
