@@ -12,15 +12,15 @@ protocol MVVMCompatibleView: View {
     associatedtype ModelType: MVVMCompatibleViewModel<HD>
     associatedtype T: View
     
-    public var viewModel: ObservedObject<ModelType> { get set }
-    public var navUnit: ObservedObject<HashableNavigationUnit<ModelType.T>> { get set }
+    var viewModel: ObservedObject<ModelType> { get set }
+    var navUnit: ObservedObject<HashableNavigationUnit<ModelType.T>> { get set }
     
-    public init(viewModel: ModelType, isRootNavigationView: Bool)
-    public init(viewModel: ObservedObject<ModelType>, navUnit: ObservedObject<HashableNavigationUnit<ModelType.T>>, isRootNavigationView: Bool)
+    init(viewModel: ModelType, isRootNavigationView: Bool)
+    init(viewModel: ObservedObject<ModelType>, navUnit: ObservedObject<HashableNavigationUnit<ModelType.T>>, isRootNavigationView: Bool)
     
-    public var mainView: T { get }
+    var mainView: T { get }
     
-    public var isRootNavigationView: Bool { get set }
+    var isRootNavigationView: Bool { get set }
     
 }
 

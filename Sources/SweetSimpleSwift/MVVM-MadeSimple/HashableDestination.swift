@@ -11,8 +11,8 @@ import SwiftUI
 public protocol HashableDestination: RawRepresentable, Hashable {
     associatedtype T: View
     associatedtype Y: View
-    public func navLink(navUnit: ObservedObject<HashableNavigationUnit<Self>>) -> T
-    public func destinationView(navUnit: ObservedObject<HashableNavigationUnit<Self>>) -> Y
+    func navLink(navUnit: ObservedObject<HashableNavigationUnit<Self>>) -> T
+    func destinationView(navUnit: ObservedObject<HashableNavigationUnit<Self>>) -> Y
 }
 
 public extension HashableDestination {
