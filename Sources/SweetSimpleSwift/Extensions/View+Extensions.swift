@@ -8,9 +8,9 @@
 import SwiftUI
 
 #if os(iOS)
-extension View {
+public extension View {
     @ViewBuilder
-    func `if`<Transform: View>(
+    public func `if`<Transform: View>(
         _ condition: Bool,
         transform: (Self) -> Transform
     ) -> some View {

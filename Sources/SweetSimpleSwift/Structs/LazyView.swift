@@ -8,15 +8,15 @@
 #if os(iOS)
 import SwiftUI
 
-struct Lazy<Content: View>: View {
+public struct Lazy<Content: View>: View {
     
-    let build: () -> Content
+    public let build: () -> Content
     
-    init(_ build: @autoclosure @escaping () -> Content) {
+    public init(_ build: @autoclosure @escaping () -> Content) {
         self.build = build
     }
     
-    var body: Content {
+    public var body: Content {
         build()
     }
     
