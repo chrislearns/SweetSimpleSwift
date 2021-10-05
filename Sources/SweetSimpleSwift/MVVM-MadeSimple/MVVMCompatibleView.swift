@@ -7,7 +7,7 @@
 #if os(iOS)
 import SwiftUI
 
-protocol MVVMCompatibleView: View {
+public protocol MVVMCompatibleView: View {
     associatedtype HD: HashableDestination
     associatedtype ModelType: MVVMCompatibleViewModel<HD>
     associatedtype T: View
