@@ -18,7 +18,6 @@ public protocol HashableDestination: RawRepresentable, Hashable {
 public extension HashableDestination {
     public func navLink(navUnit: ObservedObject<HashableNavigationUnit<Self>>) -> some View{
         let destination = destinationView(navUnit: navUnit)
-        navUnit.wrappedValue.isReadyToMove = true
         return NavigationLink(
         destination:
             destination

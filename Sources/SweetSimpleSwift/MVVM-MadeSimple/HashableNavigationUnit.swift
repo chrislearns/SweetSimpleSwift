@@ -19,7 +19,7 @@ open class HashableNavigationUnit<Y:HashableDestination>: ObservableObject, Iden
     @Published public var navigationDisplayMode: NavigationBarItem.TitleDisplayMode? = nil
     @Published public var navigationSelector:Y? = nil
     @Published public var isRootNavigationView: Bool = false
-    var isReadyToMove = false
+    
     
     public var leadingButtons:[NavigationBarButton] = []
     public var trailingButtons:[NavigationBarButton] = []
@@ -37,20 +37,8 @@ open class HashableNavigationUnit<Y:HashableDestination>: ObservableObject, Iden
             self.navigationTitle = title
             self.navigationDisplayMode = navigationDisplayMode
             self.navigationBarHidden = navigationBarHidden
-            
+            self.navigationSelector = selection
             self.isRootNavigationView = isRootNavigationView
-            
-            DispatchQueue.global(qos: .background).async{
-                while !self.isReadyToMove {
-                    print("waiting for the navigation link and destination to be created")
-                }
-                DispatchQueue.main.async {
-                    print("nav link created")
-                    self.navigationSelector = selection
-                    self.isReadyToMove = false
-                }
-            }
-            
         }
         
         
