@@ -10,7 +10,7 @@ import SwiftUI
 
 public struct IdentifiableAnyView: Identifiable {
     public init(anyview: AnyView){
-        self.anyview = anyView
+        self.anyview = anyview
     }
     
     public init(_ anyview: AnyView){
