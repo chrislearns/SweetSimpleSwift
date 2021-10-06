@@ -12,6 +12,7 @@ open class MVVMCompatibleViewModel<T: HashableDestination>: ObservableObject, Ha
     @Published public var navUnit: HashableNavigationUnit<T> = .init()
     @Published public var sheetView: IdentifiableAnyView? = nil
     
+    public init(){}
     public typealias T = T
     
     public func hideKeyboard(){
