@@ -19,7 +19,7 @@ open class HashableNavigationUnit<Y:HashableDestination>: ObservableObject, Iden
     @Published public var navigationDisplayMode: NavigationBarItem.TitleDisplayMode? = nil
     @Published public var navigationSelector:Y? = nil
     @Published public var isRootNavigationView: Bool = false
-    
+    var isReadyToMove = false
     
     public var leadingButtons:[NavigationBarButton] = []
     public var trailingButtons:[NavigationBarButton] = []
@@ -37,8 +37,17 @@ open class HashableNavigationUnit<Y:HashableDestination>: ObservableObject, Iden
             self.navigationTitle = title
             self.navigationDisplayMode = navigationDisplayMode
             self.navigationBarHidden = navigationBarHidden
-            self.navigationSelector = selection
+            
             self.isRootNavigationView = isRootNavigationView
+            
+            DispatchQueue.global(qos: .userInteractive).async{
+                while !isReadyToMove {
+                    
+                }
+                self.navigationSelector = selection
+                isReadyToMove = false
+            }
+            
         }
         
         
