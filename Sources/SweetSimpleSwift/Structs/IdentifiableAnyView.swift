@@ -9,11 +9,11 @@
 import SwiftUI
 
 public struct IdentifiableAnyView: Identifiable {
-    public init(anyView: AnyView){
-        self.anyview = anyview
+    public init(anyview: AnyView){
+        self.anyview = anyView
     }
     
-    public init(_ anyView: AnyView){
+    public init(_ anyview: AnyView){
         self.anyview = anyview
     }
     public var anyview: AnyView
