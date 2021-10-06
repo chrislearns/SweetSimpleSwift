@@ -120,7 +120,7 @@ Tellus cras adipiscing enim eu. Cras pulvinar mattis nunc sed. Ut porttitor leo 
         case char5000 = 5000
         case char10000 = 10000
     }
-    public static func generateText(_ characterCount: GenerationLength) -> String {
+    public static func generateText(_ characterCount: GenerationLength = .char100) -> String {
         
         return String(text.prefix(characterCount.rawValue))
     }
