@@ -8,7 +8,7 @@
 #if os(iOS)
 import SwiftUI
 
-public class HashableNavigationUnit<Y:HashableDestination>: ObservableObject, Identifiable{
+open class HashableNavigationUnit<Y:HashableDestination>: ObservableObject, Identifiable{
     public static func == (lhs: HashableNavigationUnit, rhs: HashableNavigationUnit) -> Bool {
         return (lhs.id == rhs.id)
     }

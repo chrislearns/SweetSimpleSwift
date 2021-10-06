@@ -8,7 +8,7 @@
 #if os(iOS)
 import SwiftUI
 
-public class MVVMCompatibleViewModel<T: HashableDestination>: ObservableObject, HashableNavigationProtocol {
+open class MVVMCompatibleViewModel<T: HashableDestination>: ObservableObject, HashableNavigationProtocol {
     @Published public var navUnit: HashableNavigationUnit<T> = .init()
     @Published public var sheetView: IdentifiableAnyView? = nil
     
