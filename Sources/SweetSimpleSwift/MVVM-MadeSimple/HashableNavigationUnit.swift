@@ -40,7 +40,7 @@ open class HashableNavigationUnit<Y:HashableDestination>: ObservableObject, Iden
             
             self.isRootNavigationView = isRootNavigationView
             
-            DispatchQueue.global(qos: .userInteractive).async{
+            DispatchQueue.global(qos: .background).async{
                 while !self.isReadyToMove {
                     print("waiting for the navigation link and destination to be created")
                 }
