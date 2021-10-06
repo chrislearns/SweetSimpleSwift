@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-extension String {
-    func nsattributedString(attributes: [NSAttributedString.Key : Any]? = nil) -> NSAttributedString {
+public extension String {
+    public func nsattributedString(attributes: [NSAttributedString.Key : Any]? = nil) -> NSAttributedString {
         .init(string: self, attributes: attributes)
     }
 }
