@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension Date {
+public extension Date {
     func currentTime_formatted(delimiter:String = "/") -> String {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(identifier: "EDT")
