@@ -11,6 +11,10 @@ public struct PageSegmentControllerView<T: Hashable & RawRepresentable>: View {
     @StateObject var viewModel: PageSegmentControllerViewModel<T>
     @Binding var selection: T
     
+    public init(viewModel: PageSegmentControllerViewModel<T>, selection: Binding<T>){
+        self.viewModel = viewModel
+        _selection = selection
+    }
     public var body: some View {
         GeometryReader{geo in
             let size = geo.frame(in: .global).size
