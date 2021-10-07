@@ -11,4 +11,8 @@ public extension String {
     public func nsattributedString(attributes: [NSAttributedString.Key : Any]? = nil) -> NSAttributedString {
         .init(string: self, attributes: attributes)
     }
+    
+    public func toText() -> Text {
+        Text(self)
+    }
 }
