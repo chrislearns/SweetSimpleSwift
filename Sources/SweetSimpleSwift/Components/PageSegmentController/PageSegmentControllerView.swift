@@ -12,7 +12,7 @@ public struct PageSegmentControllerView<T: Hashable & RawRepresentable>: View {
     @Binding var selection: T
     
     public init(viewModel: PageSegmentControllerViewModel<T>, selection: Binding<T>){
-        _viewModel = viewModel
+        _viewModel = StateObject.init(wrappedValue: viewModel) 
         _selection = selection
     }
     public var body: some View {
