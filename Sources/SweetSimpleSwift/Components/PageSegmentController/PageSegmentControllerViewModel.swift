@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-open class PageSegmentControllerViewModel<T: Hashable>: ObservableObject {
+open class SegmentControllerViewModel<T: Hashable>: ObservableObject {
     
     public enum Style {
         case underline

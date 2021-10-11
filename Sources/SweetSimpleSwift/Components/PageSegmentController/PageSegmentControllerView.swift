@@ -8,10 +8,10 @@
 import SwiftUI
 
 public struct PageSegmentControllerView<T: Hashable & RawRepresentable>: View {
-    @StateObject var viewModel: PageSegmentControllerViewModel<T>
+    @StateObject var viewModel: SegmentControllerViewModel<T>
     @Binding var selection: T
     
-    public init(viewModel: PageSegmentControllerViewModel<T>, selection: Binding<T>){
+    public init(viewModel: SegmentControllerViewModel<T>, selection: Binding<T>){
         _viewModel = StateObject.init(wrappedValue: viewModel) 
         _selection = selection
     }
