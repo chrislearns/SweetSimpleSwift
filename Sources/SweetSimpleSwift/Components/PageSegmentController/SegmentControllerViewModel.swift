@@ -1,5 +1,5 @@
 //
-//  PageSegmentControllerViewModel.swift
+//  SegmentControllerViewModel.swift
 //  NewsApp
 //
 //  Created by Chris Guirguis on 10/6/21.

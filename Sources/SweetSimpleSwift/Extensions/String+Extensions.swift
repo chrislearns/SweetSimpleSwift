@@ -15,4 +15,10 @@ public extension String {
     public func toText() -> Text {
         Text(self)
     }
+
 }
+
+
+
+
+
