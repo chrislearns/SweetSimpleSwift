@@ -80,6 +80,13 @@ public extension View {
             self
         }
     }
+    
+    public func embedInNavigationLink<T: View>(destination: T) -> some View{
+        NavigationLink(destination: {destination}) {
+            self
+        }
+        
+    }
 }
 
 
