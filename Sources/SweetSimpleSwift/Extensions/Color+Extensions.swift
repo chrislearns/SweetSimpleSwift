@@ -29,7 +29,7 @@ public extension Color {
             return nil
         }
         
-        return self.init(
+       self.init(
             .sRGB,
             red: Double(r) / 255,
             green: Double(g) / 255,
