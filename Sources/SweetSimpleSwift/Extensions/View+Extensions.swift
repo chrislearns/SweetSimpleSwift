@@ -87,7 +87,7 @@ public extension View {
         }
     }
     
-    public func infiniteWidth(_ alignment: Alignment) -> some View{
+    public func infiniteWidth(_ alignment: Alignment = .leading) -> some View{
         self.frame(maxWidth: .infinity, alignment: alignment)
     }
 }
