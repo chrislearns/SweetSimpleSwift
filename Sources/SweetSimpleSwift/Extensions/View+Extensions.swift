@@ -85,7 +85,10 @@ public extension View {
         NavigationLink(destination: {destination}) {
             self
         }
-        
+    }
+    
+    public func infiniteWidth(_ alignment: Alignment) -> some View{
+        self.frame(maxWidth: .infinity, alignment: alignment)
     }
 }
 
