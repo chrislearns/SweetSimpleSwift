@@ -81,12 +81,17 @@ public extension View {
         }
     }
     
+
     public func embedInScrollView() -> some View {
         ScrollView{
+
+    public func embedInNavigationLink<T: View>(destination: T) -> some View{
+        NavigationLink(destination: {destination}) {
             self
         }
     }
     
+
     public func embedInZStack() -> some View {
         ZStack{
             self
@@ -103,6 +108,10 @@ public extension View {
         HStack{
             self
         }
+
+    public func infiniteWidth(_ alignment: Alignment = .leading) -> some View{
+        self.frame(maxWidth: .infinity, alignment: alignment)
+
     }
 }
 

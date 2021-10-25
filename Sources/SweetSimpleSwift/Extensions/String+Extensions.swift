@@ -5,6 +5,8 @@
 //  Created by Chris Guirguis on 10/6/21.
 //
 
+#if os(iOS)
+
 import SwiftUI
 
 public extension String {
@@ -15,10 +17,11 @@ public extension String {
     public func toText() -> Text {
         Text(self)
     }
+    
+    public func toColor() -> Color? {
+        Color(hex: self)
+    }
 
 }
 
-
-
-
-
+#endif
