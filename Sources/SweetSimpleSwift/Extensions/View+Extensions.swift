@@ -26,7 +26,7 @@ public extension View {
         transform: (Self, Bool) -> Transform
     ) -> some View {
         
-            transform(self, condition)
+        transform(self, condition)
         
     }
     
@@ -67,12 +67,12 @@ public extension View {
         }
         
         return v
-
+        
     }
     
     public func embedInNavigationView() -> some View {
         NavigationView{self}
-            .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     public func embedInButton(action: @escaping () -> ()) -> some View{
@@ -81,17 +81,19 @@ public extension View {
         }
     }
     
-
+    
     public func embedInScrollView() -> some View {
         ScrollView{
-
+            self
+        }
+    }
     public func embedInNavigationLink<T: View>(destination: T) -> some View{
         NavigationLink(destination: {destination}) {
             self
         }
     }
     
-
+    
     public func embedInZStack() -> some View {
         ZStack{
             self
@@ -108,10 +110,11 @@ public extension View {
         HStack{
             self
         }
-
+    }
+    
     public func infiniteWidth(_ alignment: Alignment = .leading) -> some View{
         self.frame(maxWidth: .infinity, alignment: alignment)
-
+        
     }
 }
 
