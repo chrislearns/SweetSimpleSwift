@@ -80,6 +80,30 @@ public extension View {
             self
         }
     }
+    
+    public func embedInScrollView() -> some View {
+        ScrollView{
+            self
+        }
+    }
+    
+    public func embedInZStack() -> some View {
+        ZStack{
+            self
+        }
+    }
+    
+    public func embedInVStack() -> some View {
+        VStack{
+            self
+        }
+    }
+    
+    public func embedInHStack() -> some View {
+        HStack{
+            self
+        }
+    }
 }
 
 
