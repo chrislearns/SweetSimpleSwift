@@ -21,6 +21,17 @@ public extension String {
     public func toColor() -> Color? {
         Color(hex: self)
     }
+    
+    public var isValidEmail: Bool {
+            let emailRegEx = "^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$"
+        do {
+            let regularExpression = try NSRegularExpression(pattern: emailRegEx, options: .caseInsensitive)
+            return regularExpression.firstMatch(in: self, options: [], range: NSMakeRange(0, utf16.count)) != nil
+        } catch let error {
+            print (error.localizedDescription)
+            return false
+        }
+    }
 
 }
 
