@@ -32,7 +32,37 @@ public extension String {
             return false
         }
     }
+    
+    public var isValidPhone: Bool {
+            let phoneRegEx = "^\\(?([0-9]{3})\\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$"
+        do {
+            let regularExpression = try NSRegularExpression(pattern: phoneRegEx, options: .caseInsensitive)
+            return regularExpression.firstMatch(in: self, options: [], range: NSMakeRange(0, utf16.count)) != nil
+        } catch let error {
+            print (error.localizedDescription)
+            return false
+        }
+    }
+    
+    public func isValidPassword(minCharacters: Int, requirements: [PasswordRequirements] = [.oneDigit, .oneLowercase, .oneUppercase]) -> Bool {
+        // at least one uppercase,
+        // at least one digit
+        // at least one lowercase
+        // 8 characters total
+        
+        let passwordRegEx = "\(requirements.map{$0.rawValue}.joined(separator: "")).{\(minCharacters),}"
+        
+        do {
+            let regularExpression = try NSRegularExpression(pattern: passwordRegEx, options: .useUnixLineSeparators)
+            return regularExpression.firstMatch(in: self, options: [], range: NSMakeRange(0, utf16.count)) != nil
+        } catch let error {
+            print (error.localizedDescription)
+            return false
+        }
+    }
 
 }
+
+
 
 #endif
