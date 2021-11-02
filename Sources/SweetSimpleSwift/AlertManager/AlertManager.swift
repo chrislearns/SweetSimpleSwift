@@ -20,6 +20,22 @@ public extension View {
 public class AlertManager: ObservableObject {
     
     public struct AlertObject {
+        
+        public init(
+            message: String,
+            colorOverride: Color? = nil,
+            type: AlertType,
+            style: AlertStyle,
+            duration: Double = 2.4,
+            tapToDismiss: Bool = true
+        ){
+            self.message = message
+            self.colorOverride = color
+            self.type = type
+            self.style = style
+            self.duration = duration
+            self.tapToDismiss = tapToDismiss
+        }
         public var message: String
         public var colorOverride: Color? = nil
         public var type: AlertType
