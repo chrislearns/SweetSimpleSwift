@@ -30,7 +30,7 @@ public class AlertManager: ObservableObject {
             tapToDismiss: Bool = true
         ){
             self.message = message
-            self.colorOverride = color
+            self.colorOverride = colorOverride
             self.type = type
             self.style = style
             self.duration = duration
