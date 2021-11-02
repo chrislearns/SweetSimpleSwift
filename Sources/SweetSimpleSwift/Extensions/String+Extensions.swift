@@ -23,7 +23,8 @@ public extension String {
     }
     
     public var isValidEmail: Bool {
-            let emailRegEx = "^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$"
+         
+        let emailRegEx = "[A-Z0-9a-z.-_]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}"
         do {
             let regularExpression = try NSRegularExpression(pattern: emailRegEx, options: .caseInsensitive)
             return regularExpression.firstMatch(in: self, options: [], range: NSMakeRange(0, utf16.count)) != nil
