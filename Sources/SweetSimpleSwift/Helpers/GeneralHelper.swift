@@ -5,6 +5,7 @@
 //  Created by Christopher Guirguis on 10/2/21.
 //
 #if os(iOS)
+
 import SwiftUI
 import UIKit
 import AVKit
@@ -66,6 +67,8 @@ public class GeneralHelper {
          
             return nil
         }
+    
+    public static var UniversalSafeOffsets = UIApplication.shared.windows.first?.safeAreaInsets
     
 }
 #endif
