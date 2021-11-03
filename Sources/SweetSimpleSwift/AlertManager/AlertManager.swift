@@ -154,6 +154,7 @@ public struct AlertCentralView: View {
                             self.viewModel.displayFirstAlert()
                         }
                     }
+                    .padding(8)
             }
             Spacer()
         }
