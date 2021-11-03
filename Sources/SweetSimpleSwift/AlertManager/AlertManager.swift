@@ -61,7 +61,7 @@ public class AlertManager: ObservableObject {
             public var systemImage: String {
                 switch self {
                 case .error:
-                    return "x.mark"
+                    return "xmark"
                 case .success:
                     return "checkmark"
                 case .warning:
