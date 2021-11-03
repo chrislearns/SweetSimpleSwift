@@ -167,8 +167,8 @@ public struct AlertCentralView: View {
         .onChange(of: viewModel.alertQueue.count){newValue in
             self.queueCount = newValue
         }
-        .onChange(of: queueCount, perform: { [oldCount] newCount in
-            if newCount > oldCount {
+        .onChange(of: queueCount, perform: { [queueCount] newCount in
+            if newCount > queueCount {
                 viewModel.notifyNewAlert()
                 print("alert count -> \(viewModel.alertQueue.count)")
             }
