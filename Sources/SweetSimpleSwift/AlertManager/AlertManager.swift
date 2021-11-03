@@ -132,7 +132,7 @@ public class AlertManager: ObservableObject {
 public struct AlertCentralView: View {
     
     init(viewModel: AlertManager){
-        self.viewModel = viewModel
+        _viewModel = .init(wrappedValue: viewModel)
         self.queueCount = viewModel.alertQueue.count
     }
     @StateObject var viewModel: AlertManager
