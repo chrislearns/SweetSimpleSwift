@@ -131,7 +131,12 @@ public class AlertManager: ObservableObject {
 
 public struct AlertCentralView: View {
     
+    init(viewModel: AlertManager){
+        _viewModel = .init(wrappedValue: viewModel)
+        self.queueCount = viewModel.alertQueue.count
+    }
     @StateObject var viewModel: AlertManager
+    @State var queueCount: Int
     public var body: some View {
         VStack{
             Spacer().frame(height: GeneralHelper.UniversalSafeOffsets?.top ?? 0)
@@ -153,17 +158,21 @@ public struct AlertCentralView: View {
                             self.viewModel.displayFirstAlert()
                         }
                     }
+                    .padding(8)
             }
             Spacer()
         }
         .edgesIgnoringSafeArea(.all)
         .animation(.randomizedSpring)
         .onChange(of: viewModel.alertQueue.count){newValue in
-            
+            self.queueCount = newValue
+        }
+        .onChange(of: queueCount, perform: { [queueCount] newCount in
+            if newCount > queueCount {
                 viewModel.notifyNewAlert()
                 print("alert count -> \(viewModel.alertQueue.count)")
-            
-        }
+            }
+        })
         .environmentObject(viewModel)
     }
 }
@@ -202,8 +211,8 @@ public struct AlertBanner: View {
                 .foregroundColor(.white)
         }
         .padding()
+        .infiniteWidth(.leading)
         .frame(minHeight: 50)
-//        .padding(.horizontal)
         .background(alert.color.opacity(0.6))
         .background(VisualEffectView(effect: UIBlurEffect(style: .dark)))
         .cornerRadius(10)
