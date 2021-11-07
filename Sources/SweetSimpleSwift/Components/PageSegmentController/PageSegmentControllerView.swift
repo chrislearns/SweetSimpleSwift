@@ -49,6 +49,9 @@ public struct PageSegmentControllerView<T: Hashable & RawRepresentable>: View {
                     
                 )
                     .background(viewModel.unselectedOptionBackgroundColor)
+                    .ifLet(viewModel.indicatorCornerRadius){
+                        $0.cornerRadius($1)
+                    }
             }
             .if(viewModel.style == .underline){
                 $0.background(
