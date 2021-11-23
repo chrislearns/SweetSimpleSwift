@@ -116,6 +116,12 @@ public extension View {
         self.frame(maxWidth: .infinity, alignment: alignment)
         
     }
+    
+    public func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape( RoundedCorner(radius: radius, corners: corners) )
+    }
+    
+    
 }
 
 
