@@ -30,6 +30,7 @@ struct ScrollingSegmentControllerView<T: Hashable & CustomStringConvertible>: Vi
                             }
                         }){
                             Text(String(describing: option.description))
+                                .fontWeight(viewModel.fontWeight)
                                 .foregroundColor(option == selection ? .black : .init(white: 0.3))
                                 .font(.system(size: 12, weight: option == selection ? .semibold : .regular))
                         }

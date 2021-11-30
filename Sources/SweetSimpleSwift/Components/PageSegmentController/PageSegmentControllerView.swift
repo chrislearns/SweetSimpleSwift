@@ -27,6 +27,7 @@ public struct PageSegmentControllerView<T: Hashable & RawRepresentable>: View {
                         }
                     }){
                         Text(String(describing: option.rawValue))
+                            .fontWeight(viewModel.fontWeight)
                             .frame(width: size.width/viewModel.options.count.double.cgfloat)
                             .foregroundColor(option == selection ? viewModel.selectedOptionForegroundColor : viewModel.unselectedOptionForegroundColor)
                     }
