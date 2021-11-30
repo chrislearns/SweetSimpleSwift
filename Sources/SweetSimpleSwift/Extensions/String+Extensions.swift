@@ -62,6 +62,28 @@ public extension String {
         }
     }
 
+    
+    /// **Force** is used to dictate if it should be added even if the last character is equal to the affix. Note it is irrelevant if the **affixValue** is more than 1 character large
+    public func withAffix(_ affixValue: String, location: Affix, force: Bool = false){
+        var currentAffix: String? {
+            switch location {
+            case .prefix:
+                return self.first
+            case .suffix:
+                return self.last
+            }
+        }
+        
+        if currentAffix == affixValue && !force {
+            return self
+        }
+        switch location {
+        case .prefix:
+            return affixValue + self
+        case .suffix:
+            return self + affixValue
+        }
+    }
 }
 
 
