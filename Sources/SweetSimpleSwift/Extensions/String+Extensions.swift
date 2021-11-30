@@ -68,9 +68,9 @@ public extension String {
         var currentAffix: String? {
             switch location {
             case .prefix:
-                return self.first
+                return self.first?.description
             case .suffix:
-                return self.last
+                return self.last?.description
             }
         }
         
