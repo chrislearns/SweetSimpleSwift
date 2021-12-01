@@ -209,6 +209,7 @@ public struct AlertBanner: View {
                 .foregroundColor(.white)
             Text(alert.message)
                 .foregroundColor(.white)
+                .multilineTextAlignment(.leading)
         }
         .padding()
         .infiniteWidth(.leading)
