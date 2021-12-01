@@ -89,6 +89,7 @@ struct PageSegmentControllerView_Previews: PreviewProvider {
                 selection: .constant(.three),
                 height: 30,
                 style: .underline,
+                indicatorColor: .blue,
                 selectedOptionBackgroundColor: .blue,
                 unselectedOptionBackgroundColor: .clear,
                 selectedOptionForegroundColor: .blue,
