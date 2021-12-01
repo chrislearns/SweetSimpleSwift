@@ -36,7 +36,7 @@ public struct PageSegmentControllerView<T: Hashable & RawRepresentable>: View {
             .frame(height: viewModel.height)
             .if(viewModel.style == .background){
                 $0.background(
-                    viewModel.selectedOptionBackgroundColor
+                    viewModel.indicatorColor
                         .frame(width: segmentWidth)
                         .ifLet(viewModel.indicatorCornerRadius){
                             $0.cornerRadius($1)
@@ -58,7 +58,7 @@ public struct PageSegmentControllerView<T: Hashable & RawRepresentable>: View {
                 $0.background(
                     VStack{
                         Spacer()
-                        viewModel.selectedOptionBackgroundColor
+                        viewModel.indicatorColor
                             .frame(width: segmentWidth, height: 3)
                             .ifLet(viewModel.indicatorCornerRadius){
                                 $0.cornerRadius($1)

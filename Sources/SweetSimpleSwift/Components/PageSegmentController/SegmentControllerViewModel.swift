@@ -21,6 +21,7 @@ open class SegmentControllerViewModel<T: Hashable>: ObservableObject {
     public var unselectedOptionForegroundColor: Color
     public var height: CGFloat
     public var indicatorCornerRadius: CGFloat?
+    public var indicatorColor: Color
     public var fontWeight: Font.Weight = .regular
     
     @Published public var options: [T]
@@ -31,6 +32,7 @@ open class SegmentControllerViewModel<T: Hashable>: ObservableObject {
         fontWeight: Font.Weight = .regular,
         selection: Binding<T>,
         height: CGFloat = 40,
+        indicatorColor: Color,
         indicatorCornerRadius: CGFloat? = 10,
         style: Style,
         selectedOptionBackgroundColor: Color = Color.blue.opacity(0.5),
@@ -39,6 +41,7 @@ open class SegmentControllerViewModel<T: Hashable>: ObservableObject {
         unselectedOptionForegroundColor: Color = .black
         
     ){
+        self.indicatorColor = indicatorColor
         self.fontWeight = fontWeight
         self.options = options
         _selection = selection
