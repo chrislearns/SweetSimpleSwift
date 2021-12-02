@@ -36,7 +36,7 @@ public struct PageSegmentControllerView<T: Hashable & RawRepresentable>: View {
             .frame(height: viewModel.height)
             .if(viewModel.style == .background){
                 $0.background(
-                    viewModel.indicatorColor
+                    viewModel.selectedOptionBackgroundColor
                         .frame(width: segmentWidth)
                         .ifLet(viewModel.indicatorCornerRadius){
                             $0.cornerRadius($1)

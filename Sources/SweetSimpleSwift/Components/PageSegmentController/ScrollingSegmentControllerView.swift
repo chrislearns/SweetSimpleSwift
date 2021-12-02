@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct ScrollingSegmentControllerView<T: Hashable & CustomStringConvertible>: View{
-    @StateObject var viewModel: SegmentControllerViewModel<T>
-    @Binding var selection: T
+public struct ScrollingSegmentControllerView<T: Hashable & CustomStringConvertible>: View{
+    @StateObject public var viewModel: SegmentControllerViewModel<T>
+    @Binding public var selection: T
     @Namespace var animation
     
     public init(viewModel: SegmentControllerViewModel<T>, selection: Binding<T>){
