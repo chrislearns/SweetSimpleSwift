@@ -17,6 +17,10 @@ public extension String {
     public func toText() -> Text {
         Text(self)
     }
+  
+  public func toSFSymbol() -> Image {
+      Image(systemName: self)
+  }
     
     public func toColor() -> Color? {
         Color(hex: self)
