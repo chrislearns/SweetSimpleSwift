@@ -4,8 +4,11 @@
 //
 //  Created by Christopher Guirguis on 11/23/21.
 //
+#if os(iOS)
+
 
 import SwiftUI
+import UIKit
 
 public struct RoundedCorner: Shape {
     public var radius: CGFloat = .infinity
@@ -16,3 +19,5 @@ public struct RoundedCorner: Shape {
         return Path(path.cgPath)
     }
 }
+
+#endif

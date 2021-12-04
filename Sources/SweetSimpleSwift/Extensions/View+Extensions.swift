@@ -120,8 +120,11 @@ public extension View {
     public func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape( RoundedCorner(radius: radius, corners: corners) )
     }
-    
-    
+
+    public func onTapNavigation<T: View>(destination: (() -> T)) -> some View{
+      return self.modifier(OnTapNavigation(destination: destination()))
+    }
+  
 }
 
 
