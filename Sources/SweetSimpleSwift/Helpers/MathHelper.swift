@@ -145,6 +145,34 @@ public class MathHelper {
         }
         return direction == .clockwise ? degrees : 360 - degrees
     }
+  
+  public static func scalePair(pair: (CGPoint, CGPoint), scale: (width: CGFloat, height: CGFloat)) -> (CGPoint, CGPoint){
+      return (CGPoint(x: pair.0.x * scale.width, y: pair.0.y * scale.height),
+              CGPoint(x: pair.1.x * scale.width, y: pair.1.y * scale.height))
+  }
+
+  public static func multiplyFunc(_ a: [Double], _ b: [Double]) -> [Double] {
+      return zip(a,b).map(*)
+  }
+
+  public static func linearRegression(_ xs: [Double], _ ys: [Double]) -> (slope:Double, intercept:Double) {
+      let sum1 = multiplyFunc(ys, xs).average() - xs.average() * ys.average()
+      let sum2 = multiplyFunc(xs, xs).average() - pow(xs.average(), 2)
+      let slope = sum1 / sum2
+      let intercept = ys.average() - slope * xs.average()
+      return (slope, intercept)
+  }
+
+  public static func rSquared(line:(slope:Double, intercept:Double), points:[CGPoint]) -> Double {
+      let rss:Double = points.map{(
+          (((line.slope * $0.x.double) + line.intercept) - $0.y.double) ^^ 2
+      )}.reduce(0, +)
+      
+      let tss:Double = points.map{(
+          ($0.y.double - points.map{$0.y.double}.average()) ^^ 2
+      )}.reduce(0, +)
+      return 1 - (rss/tss)
+  }
 }
 
 

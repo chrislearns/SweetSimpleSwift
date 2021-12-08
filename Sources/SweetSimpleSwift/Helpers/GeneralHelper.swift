@@ -70,5 +70,16 @@ public class GeneralHelper {
     
     public static var UniversalSafeOffsets = UIApplication.shared.windows.first?.safeAreaInsets
     
+  public static func uniq<S : Sequence, T : Equatable >(source: S) -> [T] where S.Iterator.Element == T {
+    var buffer = [T]()
+    var added = Array<T>()
+    for elem in source {
+        if !added.contains(elem) {
+            buffer.append(elem)
+            added.append(elem)
+        }
+    }
+    return buffer
+}
 }
 #endif
