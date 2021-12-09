@@ -111,7 +111,20 @@ public extension View {
             self
         }
     }
+  
+  public func embedInAnyView() -> AnyView {
+      AnyView(
+          self
+      )
+  }
+  
+  public func embedInIdentifiableAnyView() -> IdentifiableAnyView {
+    IdentifiableAnyView(
+      anyview: self.embedInAnyView()
+    )
     
+  }
+  
     public func infiniteWidth(_ alignment: Alignment = .leading) -> some View{
         self.frame(maxWidth: .infinity, alignment: alignment)
         
