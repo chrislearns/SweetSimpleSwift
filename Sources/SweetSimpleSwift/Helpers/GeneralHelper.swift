@@ -89,10 +89,10 @@ public class GeneralHelper {
   ///   - items: items you wish to add. You can add the URL of local files. For example: file:///var/mobile/Containers/Data/Application/A72A81E0-40BB-43FF-903C-0D2D46A13C7B/Documents/tempPZDC.mov
   ///   - excludedActivityTypes: Activity types you wish to exclude
   /// - Returns: none
-  public func share(
+  public static func share(
       items: [Any],
       excludedActivityTypes: [UIActivity.ActivityType]? = nil
-  ) -> Bool {
+  ) {
       guard let source = UIApplication.shared.windows.last?.rootViewController else {
           return
       }
