@@ -13,7 +13,7 @@ public struct ScrollingSegmentControllerView<T: Hashable & CustomStringConvertib
     @Namespace var animation
     
     public init(viewModel: SegmentControllerViewModel<T>, selection: Binding<T>){
-        _viewModel = StateObject.init(wrappedValue: viewModel)
+        _viewModel = viewModel
         _selection = selection
     }
     
