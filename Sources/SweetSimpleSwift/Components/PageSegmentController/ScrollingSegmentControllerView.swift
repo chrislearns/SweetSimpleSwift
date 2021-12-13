@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct ScrollingSegmentControllerView<T: Hashable & CustomStringConvertible>: View{
-    @StateObject public var viewModel: SegmentControllerViewModel<T>
+    @ObservedObject public var viewModel: SegmentControllerViewModel<T>
     @Binding public var selection: T
     @Namespace var animation
     
