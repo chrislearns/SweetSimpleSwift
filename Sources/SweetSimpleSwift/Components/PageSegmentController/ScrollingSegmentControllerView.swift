@@ -10,19 +10,21 @@ import SwiftUI
 public struct ScrollingSegmentControllerView<T: Hashable & CustomStringConvertible>: View{
     @ObservedObject public var viewModel: SegmentControllerViewModel<T>
     @Binding public var selection: T
+  @Binding public var options: [T]
     @Namespace var animation
     
-    public init(viewModel: SegmentControllerViewModel<T>, selection: Binding<T>){
-      self.viewModel = viewModel
-        _selection = selection
-    }
-    
+  public init(viewModel: SegmentControllerViewModel<T>, selection: Binding<T>, options: Binding<[T]>){
+    self.viewModel = viewModel
+    _options = options
+    _selection = selection
+  }
+  
     public var body: some View {
         ScrollView(.horizontal, showsIndicators: false){
             
             ScrollViewReader{proxy in
                 HStack(spacing: 8){
-                    ForEach(viewModel.options, id: \.self){option in
+                    ForEach(options, id: \.self){option in
                         Button(action: {
                             withAnimation(.standardEIO){
                                 selection = option
