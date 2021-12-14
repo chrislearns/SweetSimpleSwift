@@ -48,7 +48,7 @@ public struct ScrollingSegmentControllerView<T: Hashable & CustomStringConvertib
                                             Spacer()
                                             Rectangle()
                                                 .frame(height: 3)
-                                                .foregroundColor(viewModel.selectedOptionForegroundColor)
+                                                .foregroundColor(viewModel.indicatorColor)
                                                 .matchedGeometryEffect(id: "TAB", in: animation)
                                         }
                                     }
