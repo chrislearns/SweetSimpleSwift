@@ -10,12 +10,12 @@ import SwiftUI
 public struct ScrollingSegmentControllerView<T: Hashable & CustomStringConvertible>: View{
     @ObservedObject public var viewModel: SegmentControllerViewModel<T>
     @Binding public var selection: T
-  @Binding public var options: [T]
+  public var options: [T]
     @Namespace var animation
     
-  public init(viewModel: SegmentControllerViewModel<T>, selection: Binding<T>, options: Binding<[T]>){
+  public init(viewModel: SegmentControllerViewModel<T>, selection: Binding<T>, options: [T]){
     self.viewModel = viewModel
-    _options = options
+    self.options = options
     _selection = selection
   }
   
