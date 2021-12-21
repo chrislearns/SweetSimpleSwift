@@ -110,14 +110,8 @@ public class AlertManager: ObservableObject {
       self.alertQueue = []
       self.currentAlert = nil
     }
-    public var alertQueue: [AlertObject]
+    @Published public var alertQueue: [AlertObject]
     @Published public var currentAlert: AlertObject?
-    
-    public func notifyNewAlert(){
-        if alertQueue.count == 1 && currentAlert == nil {
-            displayFirstAlert()
-        }
-    }
     
     public func displayFirstAlert(){
         print("displaying first alert")
@@ -136,10 +130,9 @@ public struct AlertCentralView: View {
     
     init(viewModel: AlertManager){
         _viewModel = .init(wrappedValue: viewModel)
-        self.queueCount = viewModel.alertQueue.count
     }
     @StateObject var viewModel: AlertManager
-    @State var queueCount: Int
+    
     public var body: some View {
         VStack{
             Spacer().frame(height: GeneralHelper.UniversalSafeOffsets?.top ?? 0)
@@ -168,14 +161,10 @@ public struct AlertCentralView: View {
         .edgesIgnoringSafeArea(.all)
         .animation(.randomizedSpring)
         .onChange(of: viewModel.alertQueue.count){newValue in
-            self.queueCount = newValue
+          if self.viewModel.currentAlert == nil {
+            self.viewModel.displayFirstAlert()
+          }
         }
-        .onChange(of: queueCount, perform: { [queueCount] newCount in
-            if newCount > queueCount {
-                viewModel.notifyNewAlert()
-                print("alert count -> \(viewModel.alertQueue.count)")
-            }
-        })
         .environmentObject(viewModel)
     }
 }
