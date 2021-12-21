@@ -115,10 +115,7 @@ public class AlertManager: ObservableObject {
     
     public func displayFirstAlert(){
         print("displaying first alert")
-        currentAlert = alertQueue.first
-        if alertQueue.count > 0 {
-            _ = alertQueue.removeFirst()
-        }
+        currentAlert = alertQueue.removeFirst()
     }
     
     public func addAlert(_ alert: AlertObject){
