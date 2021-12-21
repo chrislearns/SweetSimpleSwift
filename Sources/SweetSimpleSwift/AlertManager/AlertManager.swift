@@ -123,6 +123,9 @@ public class AlertManager: ObservableObject {
     
     public func addAlert(_ alert: AlertObject){
         alertQueue.append(alert)
+      if currentAlert == nil {
+        displayFirstAlert()
+      }
     }
 }
 
@@ -160,11 +163,6 @@ public struct AlertCentralView: View {
         }
         .edgesIgnoringSafeArea(.all)
         .animation(.randomizedSpring)
-        .onChange(of: viewModel.alertQueue.count){newValue in
-          if self.viewModel.currentAlert == nil {
-            self.viewModel.displayFirstAlert()
-          }
-        }
         .environmentObject(viewModel)
     }
 }
