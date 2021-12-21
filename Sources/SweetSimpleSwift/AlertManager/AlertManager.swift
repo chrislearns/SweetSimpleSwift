@@ -105,29 +105,31 @@ public class AlertManager: ObservableObject {
             }
         }
     }
-    
-    public init(){
-      self.alertQueue = []
-      self.currentAlert = nil
+  
+  public init(){
+    self.alertQueue = []
+    self.currentAlert = nil
+  }
+  @Published public var alertQueue: [AlertObject]
+  @Published public var currentAlert: AlertObject?
+  
+  public func displayFirstAlert(){
+    DispatchQueue.main.asyncAfter(deadline: .now()) {
+      print("displaying first alert")
+      let alert = self.alertQueue.removeFirst()
+      self.currentAlert = alert
     }
-    @Published public var alertQueue: [AlertObject]
-    @Published public var currentAlert: AlertObject?
     
-    public func displayFirstAlert(){
-        print("displaying first alert")
-      let alert = alertQueue.removeFirst()
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-        self.currentAlert = alert
+  }
+  
+  public func addAlert(_ alert: AlertObject){
+    DispatchQueue.main.asyncAfter(deadline: .now()) {
+      self.alertQueue.append(alert)
+      if self.currentAlert == nil {
+        self.displayFirstAlert()
       }
-        
     }
-    
-    public func addAlert(_ alert: AlertObject){
-        alertQueue.append(alert)
-      if currentAlert == nil {
-        displayFirstAlert()
-      }
-    }
+  }
 }
 
 public struct AlertCentralView: View {
