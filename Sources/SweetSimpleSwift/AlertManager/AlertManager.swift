@@ -110,7 +110,7 @@ public class AlertManager: ObservableObject {
       self.alertQueue = []
       self.currentAlert = nil
     }
-    @Published public var alertQueue: [AlertObject]
+    public var alertQueue: [AlertObject]
     @Published public var currentAlert: AlertObject?
     
     public func notifyNewAlert(){
