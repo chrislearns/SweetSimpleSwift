@@ -115,7 +115,11 @@ public class AlertManager: ObservableObject {
     
     public func displayFirstAlert(){
         print("displaying first alert")
-        currentAlert = alertQueue.removeFirst()
+      let alert = alertQueue.removeFirst()
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        self.currentAlert = alert
+      }
+        
     }
     
     public func addAlert(_ alert: AlertObject){
