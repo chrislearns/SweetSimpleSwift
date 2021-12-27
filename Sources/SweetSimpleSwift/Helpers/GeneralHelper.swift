@@ -82,8 +82,6 @@ public class GeneralHelper {
     return buffer
   }
   
-  
-  @discardableResult
   /// This function lets you add items to a Share Sheet/UIActivityViewController.
   /// - Parameters:
   ///   - items: items you wish to add. You can add the URL of local files. For example: file:///var/mobile/Containers/Data/Application/A72A81E0-40BB-43FF-903C-0D2D46A13C7B/Documents/tempPZDC.mov

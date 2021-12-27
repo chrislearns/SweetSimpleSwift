@@ -16,7 +16,7 @@ public protocol HashableDestination: RawRepresentable, Hashable {
 }
 
 public extension HashableDestination {
-    public func navLink(navUnit: ObservedObject<HashableNavigationUnit<Self>>) -> some View{
+    func navLink(navUnit: ObservedObject<HashableNavigationUnit<Self>>) -> some View{
         let destination = destinationView(navUnit: navUnit)
         return NavigationLink(
         destination:
@@ -31,7 +31,7 @@ public extension HashableDestination {
         })
     }
     
-    public func MVVMView<B:MVVMCompatibleView>(
+    func MVVMView<B:MVVMCompatibleView>(
         type: B.Type,
         model: Any?,
         lazy: Bool = false,

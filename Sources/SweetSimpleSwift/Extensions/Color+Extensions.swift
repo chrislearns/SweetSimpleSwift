@@ -10,10 +10,10 @@ import SwiftUI
 import UIKit
 
 public extension Color {
-    public var uiColor: UIColor{
+    var uiColor: UIColor{
         return UIColor(self)
     }
-    public init?(hex: String) {
+    init?(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int: UInt64 = 0
         Scanner(string: hex).scanHexInt64(&int)

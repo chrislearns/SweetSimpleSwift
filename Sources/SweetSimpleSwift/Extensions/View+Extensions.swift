@@ -10,7 +10,7 @@ import SwiftUI
 #if os(iOS)
 public extension View {
     @ViewBuilder
-    public func `if`<Transform: View>(
+    func `if`<Transform: View>(
         _ condition: Bool,
         transform: (Self) -> Transform
     ) -> some View {
@@ -21,7 +21,7 @@ public extension View {
         }
     }
     
-    public func `if`<Transform: View>(
+    func `if`<Transform: View>(
         _ condition: Bool,
         transform: (Self, Bool) -> Transform
     ) -> some View {
@@ -39,7 +39,7 @@ public extension View {
      }
      */
     @ViewBuilder
-    public func ifLet<V, Transform: View>(
+    func ifLet<V, Transform: View>(
         _ value: V?,
         transform: (Self, V) -> Transform
     ) -> some View {
@@ -55,11 +55,11 @@ public extension View {
 
 
 public extension View {
-    public func lazy() -> some View{
+     func lazy() -> some View{
         Lazy(self)
     }
     
-    public func withEnvironmentObjects<EVs:ObservableObject, V: View>(_ vars: [EVs]) -> some View {
+     func withEnvironmentObjects<EVs:ObservableObject, V: View>(_ vars: [EVs]) -> some View {
         
         var v: V = self as! V
         for object in vars {
@@ -70,71 +70,71 @@ public extension View {
         
     }
     
-    public func embedInNavigationView() -> some View {
+     func embedInNavigationView() -> some View {
         NavigationView{self}
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
-    public func embedInButton(action: @escaping () -> ()) -> some View{
+     func embedInButton(action: @escaping () -> ()) -> some View{
         Button(action: action){
             self
         }
     }
     
     
-    public func embedInScrollView() -> some View {
+    func embedInScrollView() -> some View {
         ScrollView{
             self
         }
     }
-    public func embedInNavigationLink<T: View>(destination: T) -> some View{
+     func embedInNavigationLink<T: View>(destination: T) -> some View{
         NavigationLink(destination: {destination}) {
             self
         }
     }
     
     
-    public func embedInZStack() -> some View {
+     func embedInZStack() -> some View {
         ZStack{
             self
         }
     }
     
-    public func embedInVStack() -> some View {
+     func embedInVStack() -> some View {
         VStack{
             self
         }
     }
     
-    public func embedInHStack() -> some View {
+     func embedInHStack() -> some View {
         HStack{
             self
         }
     }
   
-  public func embedInAnyView() -> AnyView {
+   func embedInAnyView() -> AnyView {
       AnyView(
           self
       )
   }
   
-  public func embedInIdentifiableAnyView() -> IdentifiableAnyView {
+  func embedInIdentifiableAnyView() -> IdentifiableAnyView {
     IdentifiableAnyView(
       anyview: self.embedInAnyView()
     )
     
   }
   
-    public func infiniteWidth(_ alignment: Alignment = .leading) -> some View{
+    func infiniteWidth(_ alignment: Alignment = .leading) -> some View{
         self.frame(maxWidth: .infinity, alignment: alignment)
         
     }
     
-    public func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape( RoundedCorner(radius: radius, corners: corners) )
     }
 
-    public func onTapNavigation<T: View>(destination: (() -> T)) -> some View{
+    func onTapNavigation<T: View>(destination: (() -> T)) -> some View{
       return self.modifier(OnTapNavigation(destination: destination()))
     }
   

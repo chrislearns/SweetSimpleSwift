@@ -8,7 +8,7 @@
 import SwiftUI
 
 public extension Formatter {
-    public static let iso8601withFractionalSeconds: DateFormatter = {
+    static let iso8601withFractionalSeconds: DateFormatter = {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .iso8601)
         formatter.locale = Locale(identifier: "en_US_POSIX")
