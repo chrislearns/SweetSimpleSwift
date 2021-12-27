@@ -19,9 +19,9 @@ let package = Package(
     .package(name: "Firebase",
              url: "https://github.com/firebase/firebase-ios-sdk.git",
              branch: "master"),
-//    .package(name: "GoogleSignIn",
-//             url: "https://github.com/google/GoogleSignIn-iOS",
-//             .upToNextMajor(from: "6.0.0")),
+    .package(name: "GoogleSignIn",
+             url: "https://github.com/google/GoogleSignIn-iOS",
+             .upToNextMajor(from: "6.0.0")),
     .package(name: "Facebook",
              url: "https://github.com/facebook/facebook-ios-sdk",
              .upToNextMajor(from: "9.0.0")),
@@ -36,7 +36,7 @@ let package = Package(
       dependencies: [
         .product(name: "FirebaseAuth", package: "Firebase"),
         .product(name: "FacebookLogin", package: "Facebook"),
-//        .product(name: "GoogleSignIn", package: "GoogleSignIn"),
+        .product(name: "GoogleSignIn", package: "GoogleSignIn"),
         // ...
       ]
     ),

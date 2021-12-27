@@ -8,52 +8,34 @@
 #if os(iOS)
 import SwiftUI
 import FBSDKLoginKit
+import GoogleSignIn
 import Firebase
 import CryptoKit
 import AuthenticationServices
 
 open class FirebaseAuthHelper: ObservableObject {
-  static let shared = FirebaseAuthHelper(clearUserData: nil)
+  public static let shared = FirebaseAuthHelper(clearUserData: nil)
   
-  init(clearUserData: (() -> ())? = nil){
+  public init(clearUserData: (() -> ())? = nil,
+              loginErrorAction: ((_ provider: String) -> ())? = nil){
     self.clearUserData = clearUserData
+    self.loginErrorAction = loginErrorAction
   }
-  @Published var state: SignInState = .signedOut
-  @Published var isLoggingIn = false
-  var clearUserData: (() -> ())? = nil
+  @Published public  var state: SignInState = .signedOut
+  @Published public var isLoggingIn = false
   
-  func setLoggingIn(_ bool: Bool){
+  public var loginErrorAction: ((_ provider: String) -> ())? = nil
+  public var clearUserData: (() -> ())? = nil
+  
+  public func setLoggingIn(_ bool: Bool){
     withAnimation {
       self.isLoggingIn = bool
     }
   }
   
-  func facebookAuth() {
-      let loginManager = LoginManager()
-      if let presentingVC = UIApplication.shared.windows.first?.rootViewController{
-          loginManager.logIn(permissions: ["public_profile", "email"], from: presentingVC) { [weak self] (result, error) in
-              guard error == nil else {
-                  return
-              }
-              
-              if let result =  result {
-                  let credential = FacebookAuthProvider.credential(withAccessToken: result.token?.tokenString ?? "")
-                  self?.firebaseAuth(credentials: credential)
-              }
-          }
-      }
-  }
-  
-  func facebook_signOut() {
-      let loginManager = LoginManager()
-      
-      loginManager.logOut()
-      
-      firebaseSignOut { _ in }
-  }
 }
 
-extension FirebaseAuthHelper {
+public extension FirebaseAuthHelper {
   func firebasePasswordSignup(email: String, password: String, firstName: String, lastName: String, completion: @escaping ((User?, Error?) -> ())){
       Auth.auth().createUser(withEmail: email, password: password) { authDataResults, error in
           guard let authDataResults = authDataResults, error == nil else {
@@ -146,4 +128,66 @@ extension FirebaseAuthHelper {
   }
 }
 
+public extension FirebaseAuthHelper {
+  func facebookAuth() {
+      let loginManager = LoginManager()
+      if let presentingVC = UIApplication.shared.windows.first?.rootViewController{
+          loginManager.logIn(permissions: ["public_profile", "email"], from: presentingVC) { [weak self] (result, error) in
+              guard error == nil else {
+                  return
+              }
+              
+              if let result =  result {
+                  let credential = FacebookAuthProvider.credential(withAccessToken: result.token?.tokenString ?? "")
+                  self?.firebaseAuth(credentials: credential)
+              }
+          }
+      }
+  }
+  
+  func facebook_signOut() {
+      let loginManager = LoginManager()
+      
+      loginManager.logOut()
+      
+      firebaseSignOut { _ in }
+  }
+}
+
+public extension FirebaseAuthHelper {
+  func googleAuth() {
+      if GIDSignIn.sharedInstance.currentUser == nil,
+         let clientID = FirebaseApp.app()?.options.clientID,
+         let presentingVC = UIApplication.shared.windows.first?.rootViewController{
+          
+          GIDSignIn.sharedInstance.signIn(with: GIDConfiguration(clientID: clientID), presenting: presentingVC, hint: "Login Hint") { user, error in
+              if error == nil {
+                  if let user = user {
+                      
+                      if let idToken = user.authentication.idToken{
+                          
+                          let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: user.authentication.accessToken)
+                          
+                          self.firebaseAuth(credentials: credential)
+                      } else {
+                        self.setLoggingIn(false)
+                      }
+                      print("authenticated with google")
+                  } else {
+                      print("failed to unwrap optional user in GID signup")
+                    self.setLoggingIn(false)
+                  }
+              } else {
+                  print(error.debugDescription)
+                self.setLoggingIn(false)
+              }
+          }
+      }
+  }
+  func google_signOut() {
+      GIDSignIn.sharedInstance.signOut()
+      
+      firebaseSignOut { _ in }
+  }
+}
 #endif
