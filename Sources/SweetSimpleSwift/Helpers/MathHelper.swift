@@ -8,7 +8,7 @@
 
 import SwiftUI
 import Accelerate.vecLib.LinearAlgebra
-#if os(iOS)
+
 
 public class MathHelper {
     public static func solveSystemOfEquations(matrix:[[Double]], vector:[Double])->[Double]{
@@ -175,5 +175,3 @@ public class MathHelper {
   }
 }
 
-
-#endif

@@ -4,14 +4,16 @@
 //
 //  Created by Christopher Guirguis on 10/2/21.
 //
-#if os(iOS)
+
 
 import SwiftUI
+#if os(iOS)
 import UIKit
+#endif
 import AVKit
 
 public class GeneralHelper {
-  
+#if os(iOS)
   public static func takeScreenshot(orientation: UIImage.Orientation, sampleBuffer:CMSampleBuffer?) -> Data?{
     
     func takeSC(_ shouldSave: Bool = true) -> UIImage? {
@@ -68,19 +70,10 @@ public class GeneralHelper {
     return nil
   }
   
+  
   public static var UniversalSafeOffsets = UIApplication.shared.windows.first?.safeAreaInsets
   
-  public static func uniq<S : Sequence, T : Equatable >(source: S) -> [T] where S.Iterator.Element == T {
-    var buffer = [T]()
-    var added = Array<T>()
-    for elem in source {
-      if !added.contains(elem) {
-        buffer.append(elem)
-        added.append(elem)
-      }
-    }
-    return buffer
-  }
+  
   
   /// This function lets you add items to a Share Sheet/UIActivityViewController.
   /// - Parameters:
@@ -102,5 +95,19 @@ public class GeneralHelper {
       vc.popoverPresentationController?.sourceView = source.view
       source.present(vc, animated: true)
   }
-}
 #endif
+}
+
+public extension GeneralHelper {
+  static func uniq<S : Sequence, T : Equatable >(source: S) -> [T] where S.Iterator.Element == T {
+    var buffer = [T]()
+    var added = Array<T>()
+    for elem in source {
+      if !added.contains(elem) {
+        buffer.append(elem)
+        added.append(elem)
+      }
+    }
+    return buffer
+  }
+}

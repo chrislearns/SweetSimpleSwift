@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-#if os(iOS)
+
 public struct CGPair{
     public init(_ from: CGPoint, _ to: CGPoint){
         self.from = from
@@ -57,4 +57,3 @@ public struct CGPair{
         return (from, to)
     }
 }
-#endif
