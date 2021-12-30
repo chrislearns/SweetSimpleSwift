@@ -5,7 +5,6 @@
 //  Created by Christopher Guirguis on 10/5/21.
 //
 
-#if os(macOS)
 import SwiftUI
 
 public struct IdentifiableAnyView: Identifiable {
@@ -20,4 +19,3 @@ public struct IdentifiableAnyView: Identifiable {
     public let id = UUID()
 }
 
-#endif
