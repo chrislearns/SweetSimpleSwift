@@ -5,7 +5,7 @@
 //  Created by Christopher Guirguis on 10/5/21.
 //
 
-#if os(iOS)
+#if os(macOS)
 import SwiftUI
 
 public struct IdentifiableAnyView: Identifiable {
