@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-#if os(iOS)
+
 public extension View {
     @ViewBuilder
     func `if`<Transform: View>(
@@ -56,8 +56,8 @@ public extension View {
 
 public extension View {
      func lazy() -> some View{
-        Lazy(self)
-    }
+       Lazy(self)
+     }
     
      func withEnvironmentObjects<EVs:ObservableObject, V: View>(_ vars: [EVs]) -> some View {
         
@@ -70,12 +70,14 @@ public extension View {
         
     }
     
-     func embedInNavigationView() -> some View {
-        NavigationView{self}
-        .navigationViewStyle(StackNavigationViewStyle())
-    }
-    
-     func embedInButton(action: @escaping () -> ()) -> some View{
+  func embedInNavigationView() -> some View {
+    NavigationView{self}
+#if os(iOS)
+    .navigationViewStyle(StackNavigationViewStyle())
+#endif
+  }
+  
+  func embedInButton(action: @escaping () -> ()) -> some View{
         Button(action: action){
             self
         }
@@ -130,6 +132,7 @@ public extension View {
         
     }
     
+  #if os(iOS)
      func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape( RoundedCorner(radius: radius, corners: corners) )
     }
@@ -138,8 +141,10 @@ public extension View {
       return self.modifier(OnTapNavigation(destination: destination()))
     }
   
-}
-
-
+  
 #endif
+
+
+  
+}
 

@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-#if os(iOS)
 public extension View {
     public func alertAware(_ manager: AlertManager) -> some View{
         ZStack{
@@ -143,7 +142,9 @@ public struct AlertCentralView: View {
     
     public var body: some View {
         VStack{
+          #if os(iOS)
             Spacer().frame(height: GeneralHelper.UniversalSafeOffsets?.top ?? 0)
+          #endif
             if let currentAlert = viewModel.currentAlert {
                 currentAlert.view
                     .if(currentAlert.tapToDismiss){
@@ -187,7 +188,11 @@ public struct AlertCapsule: View {
         .padding()
         .frame(height: 46)
 //        .padding(.horizontal)
+#if os(iOS)
         .background(VisualEffectView(effect: UIBlurEffect(style: .dark)))
+      #elseif os(macOS)
+        .background(Color.black.opacity(0.8))
+      #endif
         .cornerRadius(23)
         
     }
@@ -210,9 +215,13 @@ public struct AlertBanner: View {
         .infiniteWidth(.leading)
         .frame(minHeight: 50)
         .background(alert.color.opacity(0.6))
+#if os(iOS)
         .background(VisualEffectView(effect: UIBlurEffect(style: .dark)))
+      #elseif os(macOS)
+        .background(Color.black.opacity(0.8))
+      #endif
         .cornerRadius(10)
         
     }
 }
-#endif
+

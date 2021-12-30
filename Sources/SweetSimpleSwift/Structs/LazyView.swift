@@ -5,7 +5,6 @@
 //  Created by Christopher Guirguis on 10/5/21.
 //
 
-#if os(iOS)
 import SwiftUI
 
 public struct Lazy<Content: View>: View {
@@ -21,5 +20,3 @@ public struct Lazy<Content: View>: View {
     }
     
 }
-
-#endif
