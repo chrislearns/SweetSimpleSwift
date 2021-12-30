@@ -21,7 +21,7 @@ open class FirebaseAuthHelper: ObservableObject {
     self.clearUserData = clearUserData
     self.loginErrorAction = loginErrorAction
   }
-  @Published public  var state: SignInState = .signedOut
+  @Published public var state: SignInState = .signedOut
   @Published public var isLoggingIn = false
   
   public var loginErrorAction: ((_ provider: String) -> ())? = nil
