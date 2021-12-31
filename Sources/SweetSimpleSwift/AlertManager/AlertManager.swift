@@ -142,9 +142,7 @@ public struct AlertCentralView: View {
     
     public var body: some View {
         VStack{
-          #if os(iOS)
-            Spacer().frame(height: GeneralHelper.UniversalSafeOffsets?.top ?? 0)
-          #endif
+            Spacer().frame(height: GeneralHelper.UniversalSafeOffsets.top)
             if let currentAlert = viewModel.currentAlert {
                 currentAlert.view
                     .if(currentAlert.tapToDismiss){

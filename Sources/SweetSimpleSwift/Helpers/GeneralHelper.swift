@@ -54,6 +54,7 @@ public class GeneralHelper {
               .scaledToFit()
             Image(uiImage: overallSC)
               .resizable()
+              .padding()
               .scaledToFit()
           }.frame(width: 800, height: 800)
         }
@@ -71,7 +72,21 @@ public class GeneralHelper {
   }
   
   
-  public static var UniversalSafeOffsets = UIApplication.shared.windows.first?.safeAreaInsets
+  public static var UniversalSafeOffsets: SafeLayout {
+#if os(iOS)
+    guard let window = UIApplication.shared.windows.first else {
+      return SafeLayout(top: 0, bottom: 0, left: 0, right: 0)
+    }
+    return SafeLayout(top: window.safeAreaInsets.top,
+                      bottom: window.safeAreaInsets.bottom,
+                      left: window.safeAreaInsets.left,
+                      right: window.safeAreaInsets.right
+    )
+    
+#else
+    return SafeLayout(top: 0, bottom: 0, left: 0, right: 0)
+#endif
+  }
   
   
   
@@ -110,4 +125,11 @@ public extension GeneralHelper {
     }
     return buffer
   }
+}
+
+public struct SafeLayout: Codable {
+  var top: CGFloat
+  var bottom: CGFloat
+  var left: CGFloat
+  var right: CGFloat
 }
