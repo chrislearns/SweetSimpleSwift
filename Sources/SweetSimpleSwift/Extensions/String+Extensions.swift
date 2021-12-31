@@ -5,7 +5,7 @@
 //  Created by Chris Guirguis on 10/6/21.
 //
 
-#if os(iOS)
+
 
 import SwiftUI
 
@@ -90,6 +90,3 @@ public extension String {
     }
 }
 
-
-
-#endif

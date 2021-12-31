@@ -4,15 +4,20 @@
 //
 //  Created by Chris Guirguis on 10/6/21.
 //
-#if os(iOS)
+
 
 import SwiftUI
+
+#if os(iOS)
 import UIKit
+#endif
 
 public extension Color {
+#if os(iOS)
     var uiColor: UIColor{
         return UIColor(self)
     }
+#endif
     init?(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int: UInt64 = 0
@@ -40,4 +45,4 @@ public extension Color {
     
 }
 
-#endif
+
