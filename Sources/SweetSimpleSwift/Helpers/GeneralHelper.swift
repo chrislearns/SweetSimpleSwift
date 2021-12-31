@@ -117,7 +117,7 @@ public extension GeneralHelper {
     for elem in source {
       if !added.contains(elem) {
         buffer.append(elem)
-        added.append(elem)
+        added.append(elem) 
       }
     }
     return buffer
