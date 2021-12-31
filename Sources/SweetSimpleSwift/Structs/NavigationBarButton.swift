@@ -5,7 +5,7 @@
 //  Created by Christopher Guirguis on 10/5/21.
 //
 
-#if os(iOS)
+
 import SwiftUI
 
 public struct NavigationBarButton:Identifiable{
@@ -45,5 +45,3 @@ public struct NavigationBarButton:Identifiable{
         }
     }
 }
-
-#endif
