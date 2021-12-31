@@ -125,8 +125,8 @@ public extension GeneralHelper {
 }
 
 public struct SafeLayout: Codable {
-  var top: CGFloat
-  var bottom: CGFloat
-  var left: CGFloat
-  var right: CGFloat
+  public var top: CGFloat
+  public var bottom: CGFloat
+  public var left: CGFloat
+  public var right: CGFloat
 }
