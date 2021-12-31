@@ -71,25 +71,6 @@ public class GeneralHelper {
     return nil
   }
   
-  
-  public static var UniversalSafeOffsets: SafeLayout {
-#if os(iOS)
-    guard let window = UIApplication.shared.windows.first else {
-      return SafeLayout(top: 0, bottom: 0, left: 0, right: 0)
-    }
-    return SafeLayout(top: window.safeAreaInsets.top,
-                      bottom: window.safeAreaInsets.bottom,
-                      left: window.safeAreaInsets.left,
-                      right: window.safeAreaInsets.right
-    )
-    
-#else
-    return SafeLayout(top: 0, bottom: 0, left: 0, right: 0)
-#endif
-  }
-  
-  
-  
   /// This function lets you add items to a Share Sheet/UIActivityViewController.
   /// - Parameters:
   ///   - items: items you wish to add. You can add the URL of local files. For example: file:///var/mobile/Containers/Data/Application/A72A81E0-40BB-43FF-903C-0D2D46A13C7B/Documents/tempPZDC.mov
@@ -111,6 +92,22 @@ public class GeneralHelper {
       source.present(vc, animated: true)
   }
 #endif
+  
+  public static var UniversalSafeOffsets: SafeLayout {
+#if os(iOS)
+    guard let window = UIApplication.shared.windows.first else {
+      return SafeLayout(top: 0, bottom: 0, left: 0, right: 0)
+    }
+    return SafeLayout(top: window.safeAreaInsets.top,
+                      bottom: window.safeAreaInsets.bottom,
+                      left: window.safeAreaInsets.left,
+                      right: window.safeAreaInsets.right
+    )
+    
+#else
+    return SafeLayout(top: 0, bottom: 0, left: 0, right: 0)
+#endif
+  }
 }
 
 public extension GeneralHelper {
