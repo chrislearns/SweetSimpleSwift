@@ -74,16 +74,37 @@ public extension Date {
         return Calendar.current.date(byAdding: dc, to: self)
     }
     
-    var isToday: Bool {
-        self.isSameYMD(as: Date())
+  var isToday: Bool {
+    self.isSameYMD(as: Date())
+  }
+  
+  func isBeforeToday() -> Bool? {
+    let diff = Calendar.current.dateComponents([.day], from: self, to: Date())
+    guard let day = diff.day else {return nil}
+    if day > 0 {
+      return true
+    } else {
+      return false
     }
-    
-    func isSameYMD(as date: Date) -> Bool{
-        self.dateComponents.year == date.dateComponents.year &&
-            self.dateComponents.month == date.dateComponents.month &&
-            self.dateComponents.day == date.dateComponents.day
+  }
+  
+  func isAfterToday() -> Bool? {
+    let diff = Calendar.current.dateComponents([.day], from: self, to: Date())
+    guard let day = diff.day else {return nil}
+    if day < 0 {
+      return true
+    } else {
+      return false
     }
-    
+  }
+  
+  
+  func isSameYMD(as date: Date) -> Bool{
+    self.dateComponents.year == date.dateComponents.year &&
+    self.dateComponents.month == date.dateComponents.month &&
+    self.dateComponents.day == date.dateComponents.day
+  }
+  
     var dateComponents: DateComponents{
         Calendar.current.dateComponents([.calendar, .day, .era, .hour, .minute, .month, .nanosecond, .quarter, .second, .second, .timeZone, .weekOfMonth, .weekOfYear, .weekday, .weekdayOrdinal, .year, .yearForWeekOfYear], from: self)
     }
