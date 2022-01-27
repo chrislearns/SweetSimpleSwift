@@ -8,12 +8,12 @@
 import SwiftUI
 
 public extension Formatter {
-    static let iso8601withFractionalSeconds: DateFormatter = {
+  static func iso8601withFractionalSeconds(timezone: TimeZone? = .init(secondsFromGMT: 0)) -> DateFormatter  {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .iso8601)
         formatter.locale = Locale(identifier: "en_US_POSIX")
-      formatter.timeZone = TimeZone.current
+      formatter.timeZone = timezone
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
         return formatter
-    }()
+    }
 }
