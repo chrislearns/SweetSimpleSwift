@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct OnTapNavigation<T: View>: ViewModifier {
+  let preNavAction: (() -> ())?
+  let postNavAction: (() -> ())?
+  
   @State private var navigated: Bool = false
   var destination: T
   func body(content: Content) -> some View {
@@ -19,7 +22,9 @@ struct OnTapNavigation<T: View>: ViewModifier {
         EmptyView()
       }
       content.onTapGesture {
+        preNavAction?()
         navigated = true
+        postNavAction?()
       }
     }
   }

@@ -137,8 +137,10 @@ public extension View {
         clipShape( RoundedCorner(radius: radius, corners: corners) )
     }
 
-    func onTapNavigation<T: View>(destination: (() -> T)) -> some View{
-      return self.modifier(OnTapNavigation(destination: destination()))
+    func onTapNavigation<T: View>(preNavAction: @escaping (() -> ())? = nil,
+                                  postNavAction: @escaping (() -> ())? = nil,
+                                  destination: (() -> T)) -> some View{
+      return self.modifier(onTapNavigation(preNavAction: preNavAction, postNavAction: postNavAction, destination: destination()))
     }
   
   
