@@ -140,7 +140,7 @@ public extension View {
     func onTapNavigation<T: View>(preNavAction: (() -> ())? = nil,
                                   postNavAction: (() -> ())? = nil,
                                   destination: (() -> T)) -> some View{
-      return self.modifier(onTapNavigation(preNavAction: preNavAction, postNavAction: postNavAction, destination: destination()))
+      return self.modifier(OnTapNavigation(preNavAction: preNavAction, postNavAction: postNavAction, destination: destination()))
     }
   
   
