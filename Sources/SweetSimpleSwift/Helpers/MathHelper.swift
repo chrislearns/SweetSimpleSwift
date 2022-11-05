@@ -125,24 +125,17 @@ public class MathHelper {
         
     }
     
-  
-  @available(*, deprecated,
-              message: "This function has not been optimized for 3d analysis. All calculations are done using x & y values only right now")
-    public static func dotAndDet(pair1: (any SpacePoint, any SpacePoint), pair2: (any SpacePoint, any SpacePoint)) -> (dot: CGFloat, det: CGFloat) {
-        let vector1 = (dx: pair1.1.x - pair1.0.x,
-                       dy: pair1.1.y - pair1.0.y)
-      
-        let vector2 = (dx: pair2.1.x - pair2.0.x,
-                       dy: pair2.1.y - pair2.0.y)
+    //These functions were used to get an angle in the clockwise direction based on 2 vectors and using linear algebra;
+    public static func dotAndDet(pair1: (CGPoint, CGPoint), pair2: (CGPoint, CGPoint)) -> (dot: CGFloat, det: CGFloat) {
+        let vector1 = CGVector(dx: pair1.1.x - pair1.0.x, dy: pair1.1.y - pair1.0.y)
+        let vector2 = CGVector(dx: pair2.1.x - pair2.0.x, dy: pair2.1.y - pair2.0.y)
         let dot = (vector1.dx * vector2.dx) + (vector1.dy * vector2.dy)
         let det = (vector1.dx * vector2.dy) - (vector1.dy * vector2.dx)
         //    print("dot = ", dot, " || det = ", det)
         return (dot: dot, det: det)
     }
     
-  @available(*, deprecated,
-              message: "This function has not been optimized for 3d analysis. All calculations are done using x & y values only right now")
-  public static func angleFromVectors<S: SpacePoint>(pair1: CGPair<S>, pair2: CGPair<S>, direction:ClockwiseCounterclockwise) -> CGFloat{
+    public static func angleFromVectors(pair1: CGPair, pair2: CGPair, direction:ClockwiseCounterclockwise) -> CGFloat{
         let dotdet = dotAndDet(pair1: pair1.toTuple(), pair2: pair2.toTuple())
         let radAngle = atan2(dotdet.det, dotdet.dot).double
         let angle = Angle(radians: radAngle)
