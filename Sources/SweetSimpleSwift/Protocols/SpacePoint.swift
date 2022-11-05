@@ -7,11 +7,13 @@
 
 import SwiftUI
 
-public protocol SpacePoint: Codable {
+public protocol SpacePoint: Codable, AdditiveArithmetic {
   init(x: CGFloat, y: CGFloat, z: CGFloat?)
   var x: CGFloat { get }
   var y: CGFloat { get }
   var z: CGFloat? { get }
+  
+  
 }
 
 extension CGPoint: SpacePoint {
