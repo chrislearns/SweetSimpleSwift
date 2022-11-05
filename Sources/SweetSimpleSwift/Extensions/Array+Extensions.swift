@@ -39,8 +39,8 @@ public extension Array where Element == Array<CGFloat> {
     func max() -> CGFloat? { self.compactMap{$0.max()}.max() }
 }
 
-//MARK: - Arrays - Element == CGPoint
-public extension Array where Element == CGPoint {
+//MARK: - Arrays - Element == SpacePoint
+public extension Array where Element: SpacePoint {
     
     /*This function takes an array of doubles and finds the smallest and largest of the x and y values. From there it finds the distance between 2 theoretical points:
      - Point 1 = (XMin, YMin)
@@ -63,12 +63,13 @@ public extension Array where Element == CGPoint {
         }
     }
     
-    //This function just returns the average of all x values and the average of all y values in the form of a CGPoint --> CGPoint(averageX, averageY)
-    func averagePoint() -> CGPoint {
-        let averageX = self.map({$0.x}).average()
-        let averageY = self.map({$0.y}).average()
-        return CGPoint(x: averageX, y: averageY)
-    }
+    //This function just returns the average of all x values and the average of all y values in the form of a SpacePoint --> SpacePoint(averageX, averageY)
+  func averagePoint() -> Element {
+    let averageX: CGFloat = self.map({$0.x}).average()
+    let averageY: CGFloat = self.map({$0.y}).average()
+    let averageZ: CGFloat = self.compactMap({$0.z}).average()
+    return Element.init(x: averageX, y: averageY, z: averageZ)
+  }
     
     
     //This function finds the quadratic equation that best fits a set of points
@@ -91,7 +92,9 @@ public extension Array where Element == CGPoint {
             
             let vector:[Double] = [x2y1, x1y1, y1]
             let vals = MathHelper.solveSystemOfEquations(matrix: matrix, vector: vector)
-        return QuadraticEquation(a: vals[0], b: vals[1], c: vals[2], points: self)
+      return QuadraticEquation(a: vals[0], b: vals[1], c: vals[2], points: self.map{$0.twoDimensionalPoint})
         }
+  
+  
     
 }
