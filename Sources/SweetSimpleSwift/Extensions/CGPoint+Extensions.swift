@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-public extension SpacePoint {
+public extension CGPoint {
     
-    static func < (lhs: SpacePoint, rhs: SpacePoint) -> Bool {
-      return sqrt((lhs.x ^^ 2) + (lhs.y ^^ 2) + ((lhs.z ?? 0) ^^ 2)) < sqrt((rhs.x ^^ 2) + (rhs.y ^^ 2) + ((rhs.z ?? 0) ^^ 2))
+    static func < (lhs: CGPoint, rhs: CGPoint) -> Bool {
+        return sqrt((lhs.x ^^ 2) + (lhs.y ^^ 2)) < sqrt((rhs.x ^^ 2) + (rhs.y ^^ 2))
     }
     func midPointFrom(to p2: CGPoint) -> CGPoint {
         return CGPoint(x: (self.x + p2.x) / 2, y: (self.y + p2.y) / 2);
@@ -23,7 +23,9 @@ public extension SpacePoint {
     }
     
     init(_ size: CGSize) {
-      self.init(x: size.width, y: size.height, z: nil)
+        self.init()
+        self.x = size.width
+        self.y = size.height
     }
     
     func toSize() -> CGSize {
@@ -31,7 +33,7 @@ public extension SpacePoint {
     }
     
     init(x: Float, y: Float){
-      self.init(x: CGFloat(x), y: CGFloat(y), z: nil)
+        self.init(x: CGFloat(x), y: CGFloat(y))
     }
     
     func offsetBy(angle:Double, distance:CGFloat) -> CGPoint{
@@ -55,13 +57,8 @@ public extension SpacePoint {
         return sqrt(self.x * self.x + self.y * self.y)
     }
     
-    func midpoint(_ point: Self) -> Self {
-      let x = (self.x + point.x)
-      let y = (self.y + point.y)
-      let z = ((self.z ?? 0) + (point.z ?? 0))
-      return Self(x: x/2,
-                  y: y/2,
-                  z: z/2)
+    func midpoint(_ point: CGPoint) -> CGPoint {
+        return (self + point) / 2
     }
     
     func friendlyString() -> String {
