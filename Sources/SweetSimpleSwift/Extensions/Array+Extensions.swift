@@ -69,29 +69,4 @@ public extension Array where Element == CGPoint {
         let averageY = self.map({$0.y}).average()
         return CGPoint(x: averageX, y: averageY)
     }
-    
-    
-    //This function finds the quadratic equation that best fits a set of points
-    func quadraticEquation() -> QuadraticEquation{
-            let x4 = self.map({$0.x ^^ 4}).reduce(0, +).double
-            let x3 = self.map({$0.x ^^ 3}).reduce(0, +).double
-            let x2 = self.map({$0.x ^^ 2}).reduce(0, +).double
-            let x1 = self.map({$0.x}).reduce(0, +).double
-            
-            let x1y1 = self.map({$0.x * $0.y}).reduce(0, +).double
-            let x2y1 = self.map({($0.x ^^ 2) * $0.y}).reduce(0, +).double
-            let y1 = self.map({$0.y}).reduce(0, +).double
-            let n = Double(self.count)
-            
-            let matrix:[[Double]] = [
-                [x4, x3, x2],
-                [x3, x2, x1],
-                [x2, x1, n],
-            ]
-            
-            let vector:[Double] = [x2y1, x1y1, y1]
-            let vals = MathHelper.solveSystemOfEquations(matrix: matrix, vector: vector)
-        return QuadraticEquation(a: vals[0], b: vals[1], c: vals[2], points: self)
-        }
-    
 }
