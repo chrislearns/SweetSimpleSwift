@@ -8,14 +8,16 @@
 import SwiftUI
 
 public struct IdentifiableAnyView: Identifiable {
-    public init(anyview: AnyView){
+  public init(anyview: AnyView, id: String = UUID().uuidString){
         self.anyview = anyview
+    self.id = id
     }
     
-    public init(_ anyview: AnyView){
+  public init(_ anyview: AnyView, id: String = UUID().uuidString){
         self.anyview = anyview
+    self.id = id
     }
     public var anyview: AnyView
-    public let id = UUID()
+  public var id: String
 }
 
