@@ -120,9 +120,10 @@ public extension View {
       )
   }
   
-  func embedInIdentifiableAnyView() -> IdentifiableAnyView {
+  func embedInIdentifiableAnyView(id: String? = nil) -> IdentifiableAnyView {
     IdentifiableAnyView(
-      anyview: self.embedInAnyView()
+      anyview: self.embedInAnyView(),
+      id: id
     )
     
   }
